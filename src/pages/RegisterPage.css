@@ -1,0 +1,47 @@
+.register-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://i.imgur.com/6zkmsHy.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}
+.register-wrapper {
+  width: 40%;
+  padding: 20px;
+  background-color: white;
+}
+.register-wrapper > h1 {
+  font-size: 24px;
+  font-weight: 300;
+}
+.register-wrapper > form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.register-wrapper > form > input {
+  flex: 1;
+  min-width: 40%;
+  margin: 20px 10px 0px 0px;
+  padding: 10px;
+}
+.register-wrapper > form > button {
+  margin-top: 20px;
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+}
+
+.sign-up-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

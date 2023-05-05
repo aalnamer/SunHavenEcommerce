@@ -1,18 +1,20 @@
 import React from "react";
 import "./HomePage.css";
 import products from "../api/products";
+import Announcement from "../homePageComponents/Announcement";
+import Nav from "../nav/Nav";
+import Slider from "../homePageComponents/Slider";
+import Categories from "../homePageComponents/Categories";
+import Products from "../homePageComponents/ProductList";
+import NewsLetter from "../homePageComponents/NewsLetter";
+import Footer from "../homePageComponents/Footer";
 
 function HomePage() {
   return (
     <div className="home-page-container">
-      {/* <h1>Products</h1>
-      {products.map((product) => (
-        <div key={product.id} className="product-container">
-          <img src={product.imageUrl} alt={product.name} />
-
-          {product.name}
-        </div>
-      ))} */}
+      <Slider />
+      <Categories />
+      <Products />
     </div>
   );
 }

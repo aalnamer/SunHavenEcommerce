@@ -1,13 +1,13 @@
 import React from "react";
 import "./Nav.css";
-import { Link } from "react-router-dom";
-import { ShoppingCart } from "phosphor-react";
-import { MagnifyingGlass } from "phosphor-react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useNavigate } from "react-router-dom";
 
 function Nav() {
+  const navigate = useNavigate();
+
   return (
     <header className="header-container">
       <div className="wrapper-container">
@@ -18,12 +18,14 @@ function Nav() {
           </div>
         </div>
         <div className="center-wrapper">
-          <h1>Sun Haven</h1>
+          <h1 style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
+            Sun Haven
+          </h1>
         </div>
         <div className="right-wrapper">
           <div className="menu-items">
-            <h3>Register</h3>
-            <h3>Sign In</h3>
+            <h3 onClick={() => navigate("/register")}>Register</h3>
+            <h3 onClick={() => navigate("/login")}>Sign In</h3>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlinedIcon />
             </Badge>
