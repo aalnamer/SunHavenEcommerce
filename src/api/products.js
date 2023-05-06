@@ -5,22 +5,20 @@ const products = [
     imageUrl: "https://i.imgur.com/BACvHw1.png",
     bgColor: "white",
     price: 129.99,
-    description:
-      "Take your style to new heights with our iconic aviator sunglasses. Not only do they look great, but they also offer superior sun protection and durability for all your outdoor adventures.",
+    description: "Discover fashion-forward pieces at affordable prices.",
   },
   {
     id: 2,
     name: "Retro Shades",
-    imageUrl: "https://i.imgur.com/n2jbA0y.png",
+    imageUrl: "https://i.imgur.com/nVOVUJw.png",
     price: 99.99,
     bgColor: "white",
-    description:
-      "Elevate your summer style with our sleek and stylish round sunglasses. With their timeless design and high-quality lenses, you can't go wrong with this classic look.",
+    description: "Shop the latest trends in fashion",
   },
   {
     id: 3,
     name: "Seamless Design",
-    imageUrl: "https://i.imgur.com/LfiYsi0.png",
+    imageUrl: "https://i.imgur.com/UIc8K63.png",
     price: 89.99,
     bgColor: "white",
     description: "Make a bold statement",

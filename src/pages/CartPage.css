@@ -1,0 +1,128 @@
+.cart-page-container {
+  text-align: center;
+  font-size: 20px;
+}
+
+.cart-page-content {
+  padding: 20px;
+}
+
+.cart-page-content > h1 {
+  font-weight: 300;
+}
+
+.top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.top-section > button {
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.top-content > span {
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 0px 10px;
+}
+
+.bot-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.bot-product-info-content {
+  flex: 2;
+}
+
+.bot-summary-content {
+  flex: 1;
+  border: 0.5px solid lightgrey;
+  border-radius: 10px;
+  padding: 10px;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bot-summary-content > h1 {
+  font-weight: 200;
+}
+
+.summary-item {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.bot-summary-content > button {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.bot-summary-content > button:focus {
+  outline: none;
+}
+
+.idv-product-info-container {
+  display: flex;
+  gap: 20px;
+}
+
+.idv-product-info-container > div {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.idv-product-info-container > img {
+  width: 100%;
+  max-width: 200px;
+}
+
+.idv-price-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.cart-product {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.idv-product-info-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.idv-product-info-container > img {
+  width: 100px; /* Adjust the width as needed */
+}
+
+.idv-product-info-container > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-qunatity-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-price-container {
+  margin-top: 10px;
+}

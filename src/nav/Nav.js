@@ -13,7 +13,7 @@ function Nav() {
       <div className="wrapper-container">
         <div className="left-wrapper">
           <div className="search-container">
-            <input />
+            <input placeholder="Search" />
             <SearchIcon style={{ color: "gray", fontSize: 16 }} />
           </div>
         </div>
@@ -27,7 +27,10 @@ function Nav() {
             <h3 onClick={() => navigate("/register")}>Register</h3>
             <h3 onClick={() => navigate("/login")}>Sign In</h3>
             <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlinedIcon />
+              <ShoppingCartOutlinedIcon
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/cart")}
+              />
             </Badge>
           </div>
         </div>

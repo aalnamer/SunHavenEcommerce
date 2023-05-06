@@ -33,7 +33,7 @@ function Slider() {
               <img src={item.imageUrl} />
             </div>
             <div className="info-container">
-              <h1> SUMMER SALE!</h1>
+              <h2> SUMMER SALE!</h2>
               <p>{item.description}</p>
               <button>Shop Now</button>
             </div>

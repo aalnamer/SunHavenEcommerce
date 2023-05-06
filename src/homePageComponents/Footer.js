@@ -19,7 +19,7 @@ function Footer() {
         </p>
         <div className="footer-socials">
           <div className="footer-icon fb-icon">
-            <FacebookIcon col />
+            <FacebookIcon />
           </div>
           <div className="footer-icon ig-icon">
             <InstagramIcon />

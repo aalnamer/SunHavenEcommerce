@@ -5,12 +5,12 @@ function Announcement() {
     <div
       style={{
         height: 30,
-        backgroundColor: "teal",
+        backgroundColor: "#008000",
         color: "white",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontSize: 14,
+        fontSize: 20,
         fontWeight: 500,
       }}
     >

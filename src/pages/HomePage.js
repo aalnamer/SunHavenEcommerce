@@ -15,6 +15,7 @@ function HomePage() {
       <Slider />
       <Categories />
       <Products />
+      <NewsLetter />
     </div>
   );
 }
