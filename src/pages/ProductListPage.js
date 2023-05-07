@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductListPage.css";
-
 import Products from "../homePageComponents/ProductList";
+import Product from "../homePageComponents/Product";
 
-function ProductListPage() {
+function ProductListPage({ title, url }) {
   return (
     <div className="product-list-page-container">
-      <h1>Shirts</h1>
+      <h1>{title}</h1>
       <div className="filter-container">
         <div className="filter-item">
           <span>Filter Products:</span>
@@ -39,7 +39,7 @@ function ProductListPage() {
         </div>
       </div>
       <div className="product-list-page-products">
-        <Products />
+        <Product url={url} />
       </div>
     </div>
   );

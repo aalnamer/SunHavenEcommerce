@@ -3,8 +3,10 @@ import "./Slider.css";
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined";
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import products from "../api/products";
+import { useNavigate } from "react-router-dom";
 
 function Slider() {
+  const navigate = useNavigate();
   const [slideIdx, setSlideIdx] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -35,7 +37,9 @@ function Slider() {
             <div className="info-container">
               <h2> SUMMER SALE!</h2>
               <p>{item.description}</p>
-              <button>Shop Now</button>
+              <button onClick={() => navigate("/product-list/men")}>
+                Shop Now
+              </button>
             </div>
           </div>
         ))}

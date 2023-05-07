@@ -2,17 +2,13 @@ export const categories = [
   {
     id: 1,
     img: "https://i.imgur.com/dhCj9Rc.png",
-    title: "Shirts",
+    title: "Men",
   },
-  {
-    id: 2,
-    img: "https://i.imgur.com/MxtRwpF.png",
-    title: "Pants",
-  },
+
   {
     id: 3,
-    img: "https://i.imgur.com/MYNXGwX.png",
-    title: "Hoodies",
+    img: "https://i.imgur.com/OsUqS2x.png",
+    title: "Women",
   },
   {
     id: 4,

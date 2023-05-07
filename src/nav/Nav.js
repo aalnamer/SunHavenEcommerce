@@ -24,7 +24,15 @@ function Nav() {
         </div>
         <div className="right-wrapper">
           <div className="menu-items">
+            <h3 onClick={() => navigate("/product-list/men")}>Men's Wear</h3>
+            <h3 onClick={() => navigate("/product-list/women")}>
+              Women's Wear
+            </h3>
+            <h3 onClick={() => navigate("/product-list/accessories")}>
+              Accessories
+            </h3>
             <h3 onClick={() => navigate("/register")}>Register</h3>
+
             <h3 onClick={() => navigate("/login")}>Sign In</h3>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlinedIcon

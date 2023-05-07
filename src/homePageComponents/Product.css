@@ -9,9 +9,11 @@
   background-color: #f5fbfd;
   position: relative;
 }
+
 .product-container-each > img {
   height: 75%;
-
+  width: 100%; /* Added property */
+  object-fit: contain; /* Added property */
   z-index: 2;
 }
 
