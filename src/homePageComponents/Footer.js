@@ -57,7 +57,7 @@ function Footer() {
           <div className="contact-footer email">
             <EmailIcon style={{ marginRight: "10px" }} /> help@SunHaven.dev
           </div>
-          <img src="https://i.imgur.com/lsjBVQ4.png" />
+          <img src="https://i.imgur.com/HIcv4Ay.png" />
         </div>
       </div>
     </div>

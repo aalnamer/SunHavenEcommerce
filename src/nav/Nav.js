@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Nav.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../reduxData/cartSlice";
+import { selectUser } from "../reduxData/userSlice";
 
-function Nav() {
+function Nav({ loggedIn }) {
+  const user = useSelector(selectUser);
+  const cartItems = useSelector(selectCartItems);
+  console.log(cartItems);
   const navigate = useNavigate();
 
   return (
@@ -31,10 +37,18 @@ function Nav() {
             <h3 onClick={() => navigate("/product-list/accessories")}>
               Accessories
             </h3>
-            <h3 onClick={() => navigate("/register")}>Register</h3>
-
-            <h3 onClick={() => navigate("/login")}>Sign In</h3>
-            <Badge badgeContent={4} color="primary">
+            {!loggedIn ? (
+              <>
+                <h3 onClick={() => navigate("/register")}>Account</h3>
+              </>
+            ) : (
+              <>
+                <h3 onClick={() => navigate("/profile")}>
+                  {user.user.username}
+                </h3>
+              </>
+            )}
+            <Badge badgeContent={cartItems.length} color="primary">
               <ShoppingCartOutlinedIcon
                 style={{ cursor: "pointer" }}
                 onClick={() => navigate("/cart")}
@@ -42,22 +56,6 @@ function Nav() {
             </Badge>
           </div>
         </div>
-        {/* <div className="announcement-container">
-          <h1>
-            SUMMER SALE <span style={{ color: "red" }}>BOGO 50% OFF </span>
-            ANY SHOE!
-          </h1>
-        </div>
-        <div className="nav-container">
-          <div className="links">
-            <Link to={"/"}>Shop</Link>
-            <div className="shopping-cart">
-              <Link to={"/cart"}>
-                <ShoppingCart size={30} />
-              </Link>
-            </div>
-          </div>
-        </div> */}
       </div>
     </header>
   );

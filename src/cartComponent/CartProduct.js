@@ -1,48 +1,75 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../reduxData/userSlice";
+import SunHavenApi from "../backendApi";
+import { updateCartItems } from "../reduxData/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
 
-function CartProduct() {
+function CartProduct({ cart }) {
+  const user = useSelector(selectUser);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  async function handleRemoveFromCart(cartId) {
+    const req = await SunHavenApi.removeFromCart(cartId);
+    let cart = await SunHavenApi.getCart(localStorage.getItem("username"));
+    dispatch(updateCartItems([...cart.products]));
+    toast("Item removed from cart", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      className: "toast-error",
+    });
+  }
+
   return (
     <>
-      <div className="cart-product">
-        <div className="idv-product-info-container">
-          <img src="https://i.imgur.com/OCleraW.png" />
-          <div>
-            <span>
-              <b>Product: </b> Shirts
-            </span>
-            <span>
-              <b>ID:</b> 3
-            </span>
-            <span
-              style={{
-                width: "20px",
-                height: "20px",
-                borderRadius: "50%",
-                backgroundColor: "Black",
-              }}
-            ></span>
-            <span>
-              <b>Size</b> L
-            </span>
-          </div>
-        </div>
-        <div className="idv-price-info-container">
-          <div>
-            <div className="cart-qunatity-container">
-              <label for="cart-product-quantity">Quantity:</label>
-              <select id="cart-product-quantity" name="cart-product-quantity">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+      <ToastContainer />
+      {cart?.map((item) => (
+        <>
+          <div key={item.cart_id} className="cart-product">
+            <div className="idv-product-info-container">
+              <img
+                onClick={() => navigate(`/product-list/${item.product_id}`)}
+                style={{ cursor: "pointer" }}
+                src={item.img_url}
+              />
+              <div>
+                <span>
+                  <b>Product: </b> {item.title}
+                </span>
+                <span>
+                  <b>ID:</b> {item.product_id}
+                </span>
+                <span
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    borderRadius: "50%",
+                    backgroundColor: item.color,
+                  }}
+                ></span>
+                <span>
+                  <b>Size</b> L
+                </span>
+              </div>
             </div>
-            <div className="cart-price-container">$75.00</div>
+            <div className="idv-price-info-container">
+              <div>
+                <div className="cart-qunatity-container">
+                  <label for="cart-product-quantity">
+                    Quantity: {item.quantity}
+                  </label>
+                  <button onClick={() => handleRemoveFromCart(item.cart_id)}>
+                    Remove from Cart
+                  </button>
+                </div>
+                <div className="cart-price-container">${item.price}</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <hr></hr>
+          <hr></hr>
+        </>
+      ))}
     </>
   );
 }

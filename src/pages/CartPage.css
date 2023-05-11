@@ -126,3 +126,8 @@
 .cart-price-container {
   margin-top: 10px;
 }
+
+.toast-error {
+  color: red;
+  /* Add additional styling properties as needed */
+}
