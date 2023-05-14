@@ -38,9 +38,7 @@ function RegisterPage() {
       if (isLogin) {
         res = await SunHavenApi.login(data);
       } else {
-        console.log(registerData);
         res = await SunHavenApi.register(registerData);
-        console.log(res);
       }
       localStorage.setItem("token", res);
       let user = await SunHavenApi.getCurrentUser(usernameValue);

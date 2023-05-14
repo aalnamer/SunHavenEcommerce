@@ -11,7 +11,7 @@ import { selectUser } from "../reduxData/userSlice";
 function Nav({ loggedIn }) {
   const user = useSelector(selectUser);
   const cartItems = useSelector(selectCartItems);
-  console.log(cartItems);
+
   const navigate = useNavigate();
 
   return (

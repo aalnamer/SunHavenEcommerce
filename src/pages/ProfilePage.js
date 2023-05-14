@@ -9,6 +9,7 @@ import { updateCartItems } from "../reduxData/cartSlice";
 function ProfilePage() {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
+  console.log(user);
   const dispatch = useDispatch();
 
   function handleSignOut() {
@@ -27,17 +28,31 @@ function ProfilePage() {
         </>
       ) : (
         <>
-          <div className="profile-page-info">
+          <div className="profile-page-container">
             <h1 className="profile-page-title">Profile Page</h1>
             <div className="profile-page-info">
-              <p>First Name: {user.user.firstName}</p>
-              <p>Last Name: {user.user.lastName}</p>
-              <p>Email: {user.user.email}</p>
-              {/* Add more profile information as needed */}
+              <p className="info-item">First Name: {user.user.firstName}</p>
+              <p className="info-item">Last Name: {user.user.lastName}</p>
+              <p className="info-item">Email: {user.user.email}</p>
+              <button onClick={handleSignOut} className="sign-out-button">
+                Sign Out
+              </button>
             </div>
-            <button onClick={handleSignOut} className="sign-out-button">
-              Sign Out
-            </button>
+            <div className="orders-container">
+              <h2 className="orders-title">Orders</h2>
+              <ul className="orders-list">
+                {user.orders.map((item) => (
+                  <li key={item.id} className="orders-item">
+                    <a
+                      className="order-link"
+                      onClick={() => navigate(`/order/${item.id}`)}
+                    >
+                      {item.order_date}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <div className="wish-list-container">
             <WishList />

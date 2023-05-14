@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CartPage.css";
 import CartProduct from "../cartComponent/CartProduct";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../reduxData/cartSlice";
 import { selectUser } from "../reduxData/userSlice";
+import SunHavenApi from "../backendApi";
+import { useNavigate } from "react-router-dom";
 
 function CartPage() {
   const cartItems = useSelector(selectCartItems);
+  const [showPayment, setShowPayment] = useState(false);
+  const navigate = useNavigate();
+  console.log(cartItems);
   const subtotal = cartItems
     ?.reduce((total, item) => {
-      return total + item.price * item.quantity;
+      const itemPrice = item.price || 0;
+      const itemQuantity = item.quantity || item.cartQuantity || 0;
+      return total + itemPrice * itemQuantity;
     }, 0)
     .toFixed(2);
+
+  const priceForStripe = subtotal * 100;
+  console.log(priceForStripe);
+
+  async function handleCheckout() {
+    try {
+      let res = await SunHavenApi.payment(cartItems);
+      console.log(res);
+      window.location.href = res.url;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  console.log(showPayment);
 
   const shippingCost = (subtotal / 30).toFixed(2);
   return (
@@ -26,20 +47,28 @@ function CartPage() {
             <span>Shopping Bag({cartItems.length})</span>
             <span>Wish-List</span>
           </div>
+
           <button
+            onClick={handleCheckout}
             style={{
               border: "none",
               fontSize: "24px",
               backgroundColor: "black",
               color: "white",
+              cursor: localStorage.getItem("username") ? "pointer" : "default",
+              fontSize: "24px",
             }}
+            disabled={!localStorage.getItem("username")}
           >
-            Checkout Now
+            {" "}
+            {localStorage.getItem("username")
+              ? "Checkout Now"
+              : "Please login first"}
           </button>
         </div>
         <div className="bot-section">
           <div className="bot-product-info-content">
-            <CartProduct cart={cartItems} />
+            <CartProduct />
           </div>
           <div className="bot-summary-content">
             <h1>Order Summary </h1>
@@ -57,9 +86,20 @@ function CartPage() {
               </span>
               <span>${(+subtotal + +shippingCost).toFixed(2)}</span>
             </div>
-            <button style={{ cursor: "pointer", fontSize: "24px" }}>
+            <button
+              onClick={handleCheckout}
+              style={{
+                cursor: localStorage.getItem("username")
+                  ? "pointer"
+                  : "default",
+                fontSize: "24px",
+              }}
+              disabled={!localStorage.getItem("username")}
+            >
               {" "}
-              Checkout Now
+              {localStorage.getItem("username")
+                ? "Checkout Now"
+                : "Please login first"}
             </button>
           </div>
         </div>

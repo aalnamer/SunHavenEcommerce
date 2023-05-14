@@ -14,20 +14,29 @@ import ProfilePage from "./pages/ProfilePage";
 import { useDispatch, useSelector } from "react-redux";
 import SunHavenApi from "./backendApi";
 import { selectCartItems, updateCartItems } from "./reduxData/cartSlice";
+import {
+  selectWishlistItems,
+  updateWishlistItems,
+} from "./reduxData/wishlistSlice";
+import SuccessPage from "./pages/SuccessPage";
+import OrderListPage from "./pages/OrderListPage";
 
 function App() {
   const user = useSelector(selectUser);
+
   const cart = useSelector(selectCartItems);
+  const wishlist = useSelector(selectWishlistItems);
 
   const dispatch = useDispatch();
 
   // get user data
   useEffect(() => {
     async function getUserData() {
-      console.log("running user");
       if (localStorage.getItem("token")) {
         const username = localStorage.getItem("username");
         let user = await SunHavenApi.getCurrentUser(username);
+        console.log(user);
+
         dispatch(login(user.user));
         if (user.user.cartProducts) {
           dispatch(updateCartItems([...user.user.cartProducts]));
@@ -41,15 +50,27 @@ function App() {
 
   useEffect(() => {
     async function getCartData() {
-      console.log("running cart");
       if (localStorage.getItem("username")) {
         let username = localStorage.getItem("username");
+        console.log(username);
         let cart = await SunHavenApi.getCart(username);
-        console.log(cart);
+
         dispatch(updateCartItems([...cart.products]));
       }
     }
     getCartData();
+  }, [localStorage.getItem("username")]);
+
+  // get wishlist data
+  useEffect(() => {
+    async function getWishListData() {
+      if (localStorage.getItem("username")) {
+        let username = localStorage.getItem("username");
+        let wishlist = await SunHavenApi.getWishList(username);
+        dispatch(updateWishlistItems([...wishlist.wishlistItems]));
+      }
+    }
+    getWishListData();
   }, [localStorage.getItem("username")]);
 
   return (
@@ -83,6 +104,8 @@ function App() {
 
           <Route exact path="/profile" element={<ProfilePage />} />
           <Route exact path="/cart" element={<CartPage />} />
+          <Route exact path="/success" element={<SuccessPage />} />
+          <Route exact path="/order/:id" element={<OrderListPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -53,8 +53,11 @@ class SunHavenApi {
     let req = await this.request(`cart/${data.username}`, data, "post");
     return req;
   }
-  static async getCart(username) {
-    let res = await this.request(`cart/${username}`);
+  static async getCart() {
+    const user = localStorage.getItem("username");
+    const token = localStorage.getItem("token");
+    SunHavenApi.token = token;
+    let res = await this.request(`cart/${user}`);
     return res;
   }
   static async removeFromCart(cartId) {
@@ -66,6 +69,44 @@ class SunHavenApi {
       { cartId },
       "delete"
     );
+    return response;
+  }
+  static async getWishList(username) {
+    let res = await this.request(`wishlist/${username}`);
+    return res;
+  }
+  static async addToWishList(data) {
+    const token = localStorage.getItem("token");
+    SunHavenApi.token = token;
+    let req = await this.request(`wishlist/${data.username}`, data, "post");
+    return req;
+  }
+  static async removeFromWishList(data) {
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
+    SunHavenApi.token = token;
+
+    const response = await this.request(`wishlist/${username}`, data, "delete");
+    return response;
+  }
+  static async payment(data) {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("username");
+    SunHavenApi.token = token;
+    const response = await this.request(`payment/${user}`, data, "post");
+    return response;
+  }
+  static async clearCart() {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("username");
+    SunHavenApi.token = token;
+    const response = await this.request(`payment/cart/${user}`, {}, "delete");
+  }
+  static async addToOrders(data) {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("username");
+    SunHavenApi.token = token;
+    const response = await this.request(`payment/order/${user}`, data, "post");
     return response;
   }
 }

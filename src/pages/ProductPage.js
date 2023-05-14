@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProductPage.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,7 @@ import {
 function ProductPage() {
   const [itemAdded, setItemAdded] = useState(false);
   const cart = useSelector(selectCartItems);
-  console.log(cart);
+
   const [size, setSize] = useState("S");
   const [color, setColor] = useState("black");
   const [quantity, setQuantity] = useState(1);
@@ -31,18 +31,27 @@ function ProductPage() {
     getData();
   }, [id]);
 
-  async function handleAddToCart() {
-    const username = localStorage.getItem("username");
-    const data = {
-      username: username,
-      quantity: quantity,
-      size: size,
-      color: color,
-      productId: product.id,
-    };
-    const req = await SunHavenApi.addToCart(data);
-    const cart = await SunHavenApi.getCart(localStorage.getItem("username"));
-    dispatch(updateCartItems([...cart.products]));
+  async function handleAddToCart(id) {
+    if (localStorage.getItem("username")) {
+      const username = localStorage.getItem("username");
+      const data = {
+        username: username,
+        quantity: quantity,
+        size: size,
+        color: color,
+        productId: product.id,
+      };
+      const req = await SunHavenApi.addToCart(data);
+      const cart = await SunHavenApi.getCart(localStorage.getItem("username"));
+      dispatch(updateCartItems([...cart.products]));
+    } else {
+      const data = {
+        quantity: quantity,
+        size: size,
+        color: color,
+      };
+      dispatch(addToCart({ ...product, ...data }));
+    }
     toast.success("Item added to cart!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
@@ -59,7 +68,7 @@ function ProductPage() {
     const selectedQuantity = parseInt(event.target.value);
     setQuantity(selectedQuantity);
   }
-
+  console.log(product);
   return (
     <>
       <div className="product-page-container">
@@ -114,7 +123,9 @@ function ProductPage() {
               </div>
             </div>
             <div className="purchase-container">
-              <button onClick={handleAddToCart}>Add To Cart</button>
+              <button onClick={() => handleAddToCart(product.id)}>
+                Add To Cart
+              </button>
               {itemAdded && <button>Remove From Cart</button>}
             </div>
           </div>
