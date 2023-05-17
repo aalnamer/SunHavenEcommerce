@@ -20,6 +20,8 @@ import {
 } from "./reduxData/wishlistSlice";
 import SuccessPage from "./pages/SuccessPage";
 import OrderListPage from "./pages/OrderListPage";
+import NotFound from "./NotFoundPage";
+import axios from "axios";
 
 function App() {
   const user = useSelector(selectUser);
@@ -29,13 +31,20 @@ function App() {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    async function getData() {
+      const res = axios.get("https://sunhaven.onrender.com/products");
+      console.log(res);
+    }
+    getData();
+  }, []);
+
   // get user data
   useEffect(() => {
     async function getUserData() {
       if (localStorage.getItem("token")) {
         const username = localStorage.getItem("username");
         let user = await SunHavenApi.getCurrentUser(username);
-        console.log(user);
 
         dispatch(login(user.user));
         if (user.user.cartProducts) {
@@ -52,7 +61,7 @@ function App() {
     async function getCartData() {
       if (localStorage.getItem("username")) {
         let username = localStorage.getItem("username");
-        console.log(username);
+
         let cart = await SunHavenApi.getCart(username);
 
         dispatch(updateCartItems([...cart.products]));
@@ -83,13 +92,13 @@ function App() {
           <Route
             exact
             path="/product-list/men"
-            element={<ProductListPage title={"Men"} category={"shirts"} />}
+            element={<ProductListPage title={"Men"} category={"men"} />}
           />
           <Route exact path="/product-list/:id" element={<ProductPage />} />
           <Route
             exact
             path="/product-list/women"
-            element={<ProductListPage title={"Women"} category={"pants"} />}
+            element={<ProductListPage title={"Women"} category={"women"} />}
           />
           <Route
             exact
@@ -106,6 +115,7 @@ function App() {
           <Route exact path="/cart" element={<CartPage />} />
           <Route exact path="/success" element={<SuccessPage />} />
           <Route exact path="/order/:id" element={<OrderListPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>

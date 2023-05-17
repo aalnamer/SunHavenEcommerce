@@ -14,7 +14,7 @@ function Announcement() {
         fontWeight: 500,
       }}
     >
-      SUMMER SALE BOGO 50% OFF!
+      SUMMER SALE!
     </div>
   );
 }

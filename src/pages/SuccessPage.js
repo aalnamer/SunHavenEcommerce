@@ -13,10 +13,9 @@ function SuccessPage() {
     async function getItems() {
       try {
         if (localStorage.getItem("username")) {
-          console.log("running");
           let username = localStorage.getItem("username");
           let cart = await SunHavenApi.getCart(username);
-          console.log(cart);
+
           dispatch(updateCartItems([...cart.products]));
           const addOrders = await SunHavenApi.addToOrders(cart);
           const response = await SunHavenApi.clearCart(username);

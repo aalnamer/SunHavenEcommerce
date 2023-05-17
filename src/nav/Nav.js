@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../reduxData/cartSlice";
 import { selectUser } from "../reduxData/userSlice";
+import axios from "axios";
 
 function Nav({ loggedIn }) {
   const user = useSelector(selectUser);

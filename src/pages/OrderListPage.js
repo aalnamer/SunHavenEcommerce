@@ -17,17 +17,14 @@ function OrderListPage() {
       if (localStorage.getItem("token")) {
         const username = localStorage.getItem("username");
         let user = await SunHavenApi.getCurrentUser(username);
-        console.log(user);
 
         const originalOrder = user.user.orders.find(
           (order) => order.id === parseInt(id)
         );
-        console.log("Original Order:", originalOrder);
 
         const originalOrderTimestamp = new Date(
           originalOrder.order_date
         ).getTime();
-        console.log("Original Order Timestamp:", originalOrderTimestamp);
 
         const tolerance = 1 * 60 * 1000;
 
@@ -35,7 +32,6 @@ function OrderListPage() {
           const itemTimestamp = new Date(item.order_date).getTime();
           return Math.abs(itemTimestamp - originalOrderTimestamp) <= tolerance;
         });
-        console.log("Filtered Items:", filteredItems);
 
         setItem(filteredItems);
       }

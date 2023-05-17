@@ -68,7 +68,7 @@ function ProductPage() {
     const selectedQuantity = parseInt(event.target.value);
     setQuantity(selectedQuantity);
   }
-  console.log(product);
+
   return (
     <>
       <div className="product-page-container">

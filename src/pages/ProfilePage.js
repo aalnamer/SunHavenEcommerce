@@ -9,7 +9,7 @@ import { updateCartItems } from "../reduxData/cartSlice";
 function ProfilePage() {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
-  console.log(user);
+
   const dispatch = useDispatch();
 
   function handleSignOut() {

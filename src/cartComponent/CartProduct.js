@@ -13,12 +13,11 @@ import { ToastContainer, toast } from "react-toastify";
 function CartProduct() {
   const user = useSelector(selectUser);
   const cart = useSelector(selectCartItems);
-  console.log(cart, "FIRST");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   async function handleRemoveFromCart(cartId) {
-    console.log(cartId);
     if (localStorage.getItem("username")) {
       const req = await SunHavenApi.removeFromCart(cartId);
       let cartItems = await SunHavenApi.getCart(

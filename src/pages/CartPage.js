@@ -11,7 +11,7 @@ function CartPage() {
   const cartItems = useSelector(selectCartItems);
   const [showPayment, setShowPayment] = useState(false);
   const navigate = useNavigate();
-  console.log(cartItems);
+
   const subtotal = cartItems
     ?.reduce((total, item) => {
       const itemPrice = item.price || 0;
@@ -21,18 +21,16 @@ function CartPage() {
     .toFixed(2);
 
   const priceForStripe = subtotal * 100;
-  console.log(priceForStripe);
 
   async function handleCheckout() {
     try {
       let res = await SunHavenApi.payment(cartItems);
-      console.log(res);
+
       window.location.href = res.url;
     } catch (error) {
       console.log(error);
     }
   }
-  console.log(showPayment);
 
   const shippingCost = (subtotal / 30).toFixed(2);
   return (
