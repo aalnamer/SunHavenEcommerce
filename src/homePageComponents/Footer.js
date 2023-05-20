@@ -6,8 +6,10 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
+import { useNavigate } from "react-router-dom";
 
-function Footer() {
+function Footer({ loggedIn }) {
+  const navigate = useNavigate();
   return (
     <div className="footer-container">
       <div className="footer-left">
@@ -32,14 +34,20 @@ function Footer() {
       <div className="footer-center">
         <h3>Useful Links</h3>
         <ul>
-          <li>Home</li>
-          <li>Cart</li>
-          <li>Shirts</li>
-          <li>Pants</li>
-          <li>Accessories</li>
-          <li>My Account</li>
-          <li>Order Tracking</li>
-          <li>WishList</li>
+          <li onClick={() => navigate("/")}>Home</li>
+          <li onClick={() => navigate("/cart")}>Cart</li>
+          <li onClick={() => navigate("/product-list/men")}>Mens</li>
+          <li onClick={() => navigate("/product-list/women")}>Women</li>
+          <li onClick={() => navigate("/product-list/accessories")}>
+            Accessories
+          </li>
+          {loggedIn ? (
+            <>
+              <li onClick={() => navigate("/profile")}>My Account</li>
+              <li onClick={() => navigate("/profile")}>Order Tracking</li>
+              <li onClick={() => navigate("/profile")}>WishList</li>
+            </>
+          ) : null}
           <li>Terms and Conditions</li>
           <li>About Sun Haven</li>
         </ul>

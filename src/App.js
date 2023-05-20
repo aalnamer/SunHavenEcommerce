@@ -31,14 +31,6 @@ function App() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    async function getData() {
-      const res = axios.get("https://sunhaven.onrender.com/products");
-      console.log(res);
-    }
-    getData();
-  }, []);
-
   // get user data
   useEffect(() => {
     async function getUserData() {
@@ -117,7 +109,7 @@ function App() {
           <Route exact path="/order/:id" element={<OrderListPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
+        <Footer loggedIn={user} />
       </BrowserRouter>
     </div>
   );

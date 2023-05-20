@@ -19,10 +19,13 @@ function Nav({ loggedIn }) {
     <header className="header-container">
       <div className="wrapper-container">
         <div className="left-wrapper">
-          <div className="search-container">
-            <input placeholder="Search" />
-            <SearchIcon style={{ color: "gray", fontSize: 16 }} />
-          </div>
+          <img
+            onClick={() => navigate("/")}
+            alt="Logo"
+            className="logo"
+            src="https://i.imgur.com/eXHjTJo.png"
+            style={{ width: "50px", height: "50px", cursor: "pointer" }}
+          />
         </div>
         <div className="center-wrapper">
           <h1 style={{ cursor: "pointer" }} onClick={() => navigate("/")}>

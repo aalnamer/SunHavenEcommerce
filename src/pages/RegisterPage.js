@@ -123,6 +123,9 @@ function RegisterPage() {
               Create an Account!
             </span>
           </span>
+          <div>Demo Account: </div>
+          <div>Username: testuser</div>
+          <div>Password: password</div>
         </div>
       ) : (
         <div className="register-wrapper">

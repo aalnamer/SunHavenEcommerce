@@ -73,6 +73,15 @@ function CartProduct() {
                     Quantity: {item.quantity}
                   </label>
                   <button
+                    style={{
+                      background: "none",
+                      border: "none",
+
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                      padding: 0,
+                      font: "inherit",
+                    }}
                     onClick={() =>
                       handleRemoveFromCart(item.cart_id || item.cartId)
                     }
