@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Sun Haven E-commerce Store - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the frontend code for the Sun Haven E-commerce Store. It is built using React.js, Redux for state management, and Firebase for deployment.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+To set up the frontend locally, follow these steps:
 
-### `npm start`
+1. Clone the repository: `git clone https://github.com/aalnamer/SunHavenEcommerce/tree/2b7c48e74cb73fe161a475f2ccbe0f62f5cb300d`
+2. Navigate to the `ecommerce-frontend` folder: `cd ecommerce-frontend`
+3. Install dependencies: `npm install`
+4. Set up environment variables: Create a `.env` file in the root of the `ecommerce-frontend` directory and define the required environment variables. For example:
+   REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+   REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+5. Start the development server: `npm start`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Deployment
 
-### `npm test`
+The frontend can be deployed using Firebase hosting. To deploy the frontend:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Create a Firebase project (https://firebase.google.com/) if you don't have one.
+2. Install the Firebase CLI globally: `npm install -g firebase-tools`
+3. Log in to Firebase CLI: `firebase login`
+4. Initialize the Firebase project: `firebase init`
 
-### `npm run build`
+- Select the Firebase features you want to set up (e.g., hosting).
+- Choose the Firebase project you created earlier.
+- Set the public directory to the build folder (usually `build/`).
+- Configure as a single-page application (SPA) if prompted.
+- Deploy the frontend to Firebase hosting: `firebase deploy`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contributing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If you would like to contribute to the frontend of the Sun Haven E-commerce Store, please follow the general guidelines outlined in the repository's CONTRIBUTING.md file.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## License
 
-### `npm run eject`
+The Sun Haven E-commerce Store frontend is released under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code as per the terms of the license.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contact
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you have any questions, suggestions, or feedback, please contact me at [collaymen.alnamer@gmail.com](mailto:collaymen.alnamer@gmail.com).
